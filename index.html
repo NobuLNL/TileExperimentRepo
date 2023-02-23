@@ -52,6 +52,14 @@
 <body>
     <div id="map"></div>
     <div id="legend"></div>
+
+    <div id="menu">
+        <button onclick="toggleLayer('BikeMap1')">Map 1</button>
+        <button onclick="toggleLayer('BikeMap2')">Map 2</button>
+        <button onclick="toggleLayer('BikeMap3')">Map 3</button>
+        <button onclick="toggleLayer('BikeMap4')">Map 4</button>
+    </div>
+
     <script>
         mapboxgl.accessToken =
             'pk.eyJ1IjoibWFsLXdvb2QiLCJhIjoiY2oyZ2t2em50MDAyMzJ3cnltMDFhb2NzdiJ9.X-D4Wvo5E5QxeP7K_I3O8w';
@@ -61,6 +69,16 @@
             zoom: 13, 
             center: [-122.32, 47.6] 
         });
+
+        function toggleLayer(layerId) {
+            var visibility = map.getLayoutProperty(layerId, 'visibility');
+
+        if (visibility === 'visible') {
+            map.setLayoutProperty(layerId, 'visibility', 'none');
+        } else {
+            map.setLayoutProperty(layerId, 'visibility', 'visible');
+        }
+    }
 
         var grades = [4, 5, 6],
             colors = ['rgb(208,209,230)', 'rgb(103,169,207)', 'rgb(1,108,89)'],
