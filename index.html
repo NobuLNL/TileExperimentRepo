@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Map of Bike Lockers in King County</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+   
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        #legend {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: #fff;
+            margin-right: 20px;
+            border-radius: 3px;
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 40px;
+            width: 100px;
+        }
+
+        .break {
+            position: relative;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        a {
+            color: black
+        }
+    </style>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js"></script>
+
+</head>
+
+<body>
+    <div id="map"></div>
+    <div id="legend"></div>
+    <script>
+        mapboxgl.accessToken =
+            'pk.eyJ1IjoibWFsLXdvb2QiLCJhIjoiY2oyZ2t2em50MDAyMzJ3cnltMDFhb2NzdiJ9.X-D4Wvo5E5QxeP7K_I3O8w';
+        const map = new mapboxgl.Map({
+            container: 'map', 
+            style: 'mapbox://styles/mapbox/dark-v10',
+            zoom: 5, 
+            center: [-122.32, 47.6] 
+        });
+
+        var grades = [4, 5, 6],
+            colors = ['rgb(208,209,230)', 'rgb(103,169,207)', 'rgb(1,108,89)'],
+            radii = [5, 15, 20];
+
+
+        map.on('load', () => {
+            map.addSource('seattlebiketiles1', {
+                'type': 'raster',
+                'tiles': [
+                    'assets/SeattleBikeMap1/{z}/{x}/{y}.png'
+                ],
+                'tileSize': 256,
+            });
+
+            map.addLayer({
+                    'id': 'BikeMap1',
+                    'type': 'raster',
+                    'source': 'seattlebiketiles1',
+                        },
+            );
+
+            map.addSource('seattlebiketiles2', {
+                'type': 'raster',
+                'tiles': [
+                    'assets/SeattleBikeMap2/{z}/{x}/{y}.png'
+                ],
+                'tileSize': 256,
+            });
+
+            map.addLayer({
+                    'id': 'BikeMap2',
+                    'type': 'raster',
+                    'layout': {
+                        'visibility': 'none'
+                    },
+                    'source': 'seattlebiketiles2'
+                        },
+            );
+
+            map.addSource('seattlebiketiles3', {
+                'type': 'raster',
+                'tiles': [
+                    'assets/SeattleBikeMap3/{z}/{x}/{y}.png'
+                ],
+                'tileSize': 256,
+            });
+
+            map.addLayer({
+                    'id': 'BikeMap3',
+                    'type': 'raster',
+                    'layout': {
+                        'visibility': 'none'
+                    },
+                    'source': 'seattlebiketiles3'
+                        },
+            );
+
+            map.addSource('seattlebiketiles4', {
+                'type': 'raster',
+                'tiles': [
+                    'assets/SeattleBikeMap4/{z}/{x}/{y}.png'
+                ],
+                'tileSize': 256,
+            });
+
+            map.addLayer({
+                    'id': 'BikeMap4',
+                    'type': 'raster',
+                    'layout': {
+                        'visibility': 'none'
+                    },
+                    'source': 'seattlebiketiles4'
+                        },
+            );
+        });
+        
+    </script>
+</body>
+
+</html>
