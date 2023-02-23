@@ -18,3 +18,6 @@ Tileset 3 is the aforementioned version of the tileset that has the data that wa
 ## Tileset #4
 ![tile4](/assets/map4.png)
 The fourth and final tileset is one that I have created essentially from scratch. The data points on the map are still the ones from the King County GIS database regarding transit stations with bike lockers yet the map in the background is a theme that I created in mapbox.gl that was a pseudomercator projected map that I chose to have display local neighborhood names and transit lines to better illustrate my point. I chose the color scheme of green becasue of the theme around sustainability and I found that light green in combination of the font was fairly easy on the eyes.
+
+
+This map, tilesets and final theme were created by Lawrence Nobuyoshi Lorbiecki. The first and third tilesets use the grayscale theme from mapbox.gl studio's theme selector. The data was gathered from the King County GIS database. 
